@@ -13,7 +13,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $em = $this->getDoctrine()->getManager();
+        $parser = $this->get('app.htmlParser');
+        $jobs = $parser->parseHtml();
+        
+        foreach ($jobs as $job)
+        {
+            $em->persist($job);
+        }
+        $em->flush();
+        
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);
