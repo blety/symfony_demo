@@ -1,3 +1,7 @@
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@AppBundle/Controller/ParserController.php"
     type:     annotation
+    
+jobs:
+    type: rest
+    resource: AppBundle\Controller\JobController

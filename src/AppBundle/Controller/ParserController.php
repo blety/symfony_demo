@@ -6,20 +6,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class ParserController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/parser", name="parser")
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        
         $parser = $this->get('app.htmlParser');
         $jobs = $parser->parseHtml();
         
         foreach ($jobs as $job)
         {
-            $em->persist($job);
+            //$em->persist($job);
         }
         $em->flush();
         

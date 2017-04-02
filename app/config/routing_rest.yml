@@ -1,0 +1,3 @@
+Rest_User : 
+  type : rest
+  resource: "routing_rest.yml"
