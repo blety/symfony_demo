@@ -50,14 +50,6 @@ class Job
     private $type;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
-     */
-    private $date;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -161,30 +153,6 @@ class Job
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * Set date
-     *
-     * @param \DateTime $date
-     *
-     * @return Job
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime
-     */
-    public function getDate()
-    {
-        return $this->date;
     }
 }
 

@@ -11,8 +11,13 @@ use DOMXPath;
  * @author Blety
  */
 class HtmlParser {
-    const URL = "https://emploi.alsacreations.com";
-    
+
+    protected $url;
+
+    public function __construct($url)
+    {
+        $this->url = $url;
+    }
     /**
      * Returns the html pages as an array of strings
      * 
@@ -30,7 +35,7 @@ class HtmlParser {
         );
         foreach ($typeContrat as $k => $type) 
         {
-            $url = self::URL."/?action=q&g_type=offres&".$type."=1&q=&region=";
+            $url = $this->url."/?action=q&g_type=offres&".$type."=1&q=&region=";
             $html[$k] = file_get_contents($url);
         }
         

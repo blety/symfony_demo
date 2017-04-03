@@ -15,15 +15,11 @@ class ParserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         
-        $parser = $this->get('app.htmlParser');
+        $parser = $this->get('app.html_parser');
         $jobs = $parser->parseHtml();
-        
-        foreach ($jobs as $job)
-        {
-            //$em->persist($job);
-        }
-        $em->flush();
-        
+
+        $this->getDoctrine()->getRepository('AppBundle:Job')->saveJobs($jobs);
+
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ]);

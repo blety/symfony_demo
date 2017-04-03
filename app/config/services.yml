@@ -4,6 +4,6 @@ parameters:
 #    parameter_name: value
 
 services:
-    app.htmlParser:
+    app.html_parser:
         class: AppBundle\Utils\HtmlParser
-        #arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+        arguments: ["%parse_url%"]
