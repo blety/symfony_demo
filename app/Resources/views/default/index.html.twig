@@ -3,18 +3,21 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <span class="centered">Submit form to parse the employment page of Alsacreations</span>
+            {% for message in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger">{{ message|trans }}</div>
+            {% endfor %}
+            {% for message in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">{{ message|trans }}</div>
+            {% endfor %}
+            Submit form to parse the employment page of Alsacreations
             <br>
-            <input align='right' type="submit" value="Parse" />
+            {{form_start(form)}}
+            {{form_widget(form)}}
+            {{form_end(form)}}            
         </div>
     </div>
 {% endblock %}
 
 {% block stylesheets %}
-<style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #centered {align: center;}
-</style>
+<link rel="stylesheet" href="{{asset('css/main.css')}}" />
 {% endblock %}
